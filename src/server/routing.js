@@ -6,7 +6,7 @@ module.exports = function (serverStream, routesStream) {
     const routingStream = serverStream.combineLatest(
             routesStream,
             function (app, routes) {
-                return { app, routes };
+                return { app:app, routes:routes };
             }
         )
         .flatMapLatest(({ app, routes }) => {
