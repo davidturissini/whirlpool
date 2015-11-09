@@ -9,13 +9,13 @@ module.exports = function (serverStream, routesStream) {
                 return { app:app, routes:routes };
             }
         )
-        .flatMapLatest(({ app, routes }) => {
+        .flatMapLatest(({ appData }) => {
 
             return rx.Observable.create(function (o) {
                 
-                routes.forEach(function (data) {
+                appData.routes.forEach(function (data) {
 
-                    app[data.method](data.path, function (req, res) {
+                    appData.app[data.method](data.path, function (req, res) {
                         o.onNext({
                             req:req,
                             res:res,
