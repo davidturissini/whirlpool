@@ -1,8 +1,5 @@
 'use strict';
 
-require('node-babel')();
-
-
 const server = require('./server/server');
 const routing = require('./server/routing');
 const rx = require('rx');

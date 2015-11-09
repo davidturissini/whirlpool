@@ -13,13 +13,13 @@ module.exports = function (serverStream, routesStream) {
 
             return rx.Observable.create(function (o) {
                 
-                routes.forEach(function ({ method, path, handler }) {
+                routes.forEach(function (data) {
 
-                    app[method](path, function (req, res) {
+                    app[data.method](data.path, function (req, res) {
                         o.onNext({
-                            req,
-                            res,
-                            handler
+                            req:req,
+                            res:res,
+                            handler:data.handler
                         });
                     });
                 });
