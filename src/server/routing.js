@@ -9,7 +9,7 @@ module.exports = function (serverStream, routesStream) {
                 return { app:app, routes:routes };
             }
         )
-        .flatMapLatest(({ appData }) => {
+        .flatMapLatest((appData) => {
 
             return rx.Observable.create(function (o) {
                 
